@@ -8,7 +8,7 @@ class gray:
     def g2f(self, value: str) -> float:
         # 8 bits, gives us a range from 0 - 255, so it will be scaled linearly between -1 and 2
         value: str = self.xOR(value)
-        value: float = (int(value, 2) / 85) - 3
+        value: float = (int(value, 2) / 85) - 1
         return value
 
     def f2g(self, value: float) -> str:
@@ -19,7 +19,7 @@ class gray:
 
     def xOR(self, value):
         for index, bit in enumerate(value[1:]):
-            value: str = value[:index] + float(int(value[index]) ^ int(bit)) + value[index + 1:]
+            value: str = value[:index+1] + str(int(value[index]) ^ int(bit)) + value[index + 2:]
         return value
 
     def gray(self) -> str:
@@ -29,7 +29,7 @@ class gray:
         return self.value['numb']
 
     def __repr__(self) -> str:
-        return "Gray Class with value of: " + str(self.value['gray']) + " | " + str(self.value['numb'])
+        return "Gray Class: " + str(self.value['gray']) + " | " + str(self.value['numb'])
 
     def __str__(self) -> str:
         return str(self.value['gray']) + "|" + str(self.value['numb'])
