@@ -1,3 +1,6 @@
+import os
+import sys
+
 import numpy as np
 import util
 from gray import gray
@@ -16,32 +19,41 @@ class model:
     def loadFile(self, path: str):
         f = open(path, "r")
         f = f.readline().replace('\n','')
-        self.parseIn(f)
+        self.parseIn(f, path)
 
     def save(self, path: str):
         temp: str = self.shape + ',' + self.genome
         with open(path, 'w') as f:
             f.write(temp)
 
-    def parseIn(self, f):
-        f = f.split(',')
-        self.shape = f[0]
-        f[0] = [[int(x[:-2]), x[-2:]] for x in f[0].split('-')]
-        self.genome = f[1]
-        f[1] = [f[1][i:i + 8] for i in range(0, len(f[1]), 8)]
-        self.grayNumb = [gray(x, str) for x in f[1]]
-        f[1] = [number.numb() for number in self.grayNumb]
-        # 1XN x NX(N+1) for formatting of matracies
-        for x in util.pairs(f[0]):
-            acti = activations.get(x[0][1])
-            lenOfMat: int = x[0][0] * x[1][0]
-            weight, f[1] = f[1][:lenOfMat], f[1][lenOfMat:]
-            weight = np.array(weight)
-            weight = np.reshape(weight, (x[0][0], x[1][0]))
-            bias, f[1] = f[1][:x[1][0]], f[1][x[1][0]:]
-            bias = np.array(bias)
-            bias = np.reshape(bias, (1, x[1][0]))
-            self.layers.append(layer(x[0][0], x[1][0], weight, bias, acti))
+    def parseIn(self, f, path=None):
+        try:
+            f = f.split(',')
+            self.shape = f[0]
+            f[0] = [[int(x[:-2]), x[-2:]] for x in f[0].split('-')]
+            self.genome = f[1]
+            f[1] = [f[1][i:i + 8] for i in range(0, len(f[1]), 8)]
+            self.grayNumb = [gray(x, str) for x in f[1]]
+            f[1] = [number.numb() for number in self.grayNumb]
+            # 1XN x NX(N+1) for formatting of matracies
+            for x in util.pairs(f[0]):
+                acti = activations.get(x[0][1])
+                lenOfMat: int = x[0][0] * x[1][0]
+                weight, f[1] = f[1][:lenOfMat], f[1][lenOfMat:]
+                weight = np.array(weight)
+                weight = np.reshape(weight, (x[0][0], x[1][0]))
+                bias, f[1] = f[1][:x[1][0]], f[1][x[1][0]:]
+                bias = np.array(bias)
+                bias = np.reshape(bias, (1, x[1][0]))
+                self.layers.append(layer(x[0][0], x[1][0], weight, bias, acti))
+        except Exception as inst:
+            if path is not None:
+                os.remove(path)
+            else:
+                print(type(inst))  # the exception instance
+                print(inst.args)  # arguments stored in .args
+                print(inst)
+            sys.exit()
 
     def initMdl(self, shape):
         temp: str = ''
