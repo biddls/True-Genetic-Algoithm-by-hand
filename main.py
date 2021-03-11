@@ -66,14 +66,6 @@ def breed(dir):
         itter.set_description('Force breeding complete')
 
 
-def watch(checkIn, total):
-    while threading.active_count() > 1:
-        temp1 = threading.active_count()
-        time.sleep(checkIn)
-        temp2 = threading.active_count()
-        print('seconds remaining: {}, threads left: {}'.format(round((total/(total if (temp1 - temp2) == 0 else (temp1 - temp2)))*checkIn), temp2))
-
-
 if __name__ == '__main__':
     populationSize = 1000
     threads = []
