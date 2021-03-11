@@ -23,5 +23,5 @@ def showOff(path):
 
 
 if __name__ == '__main__':
-    path = 'agents\\2842.4817334373574.txt'
+    path = 'agents\\1242.4277325456724.txt'
     showOff(path)

@@ -1,6 +1,7 @@
 import wandb as wandb
 
 
+# this is just a few functions to manage the 'Weights and Bias' service in the back round
 def end():
     wandb.finish()
 
@@ -18,6 +19,7 @@ class wanb:
         wandb.run.name = name
 
 
+# test script
 if __name__ == '__main__':
     import time
     import random
