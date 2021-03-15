@@ -2,15 +2,16 @@ from random import random
 from random import choice
 from model import model
 from util import pairs
+from env import start
+
 
 
 # this class holds all the code for the breading of 2 agents his includes mixing of DNA
 # to create their offspring and genetic variation
 class breeder:
-    def __init__(self, agents, noOfSplits, mutation=0.01):
+    def __init__(self, agents, noOfSplits=20, mutation=0.01):
         self.agents = agents
         self.genomeLen = None
-        self.child = None
 
         # This ensures that the agents have 'compatible' DNA
         if self.agents[0].shape == self.agents[1].shape and len(self.agents[0].genome) == len(self.agents[1].genome):
@@ -22,12 +23,16 @@ class breeder:
             noOfSplits.insert(-1, len(self.agents[0].genome))
             # this generates the new genome sequence using list segmentation to mix and match the strings
             # together by the splits generated earlier
-            self.child = ''.join(
+            child = ''.join(
                 [choice([x.genome[pair[0]:pair[1]] for x in self.agents]) for pair in pairs(noOfSplits)])
             oppo = {'0': '1',
                     '1': '0'}
             # some genes will be swapped randomly using the dictionary above
-            self.child = ''.join([oppo[x] if random() <= mutation else x for x in self.child])
+            child = ''.join([oppo[x] if random() <= mutation else x for x in child])
+            # the newly breeded child is then sent off to tests its value
+            self.child = model()
+            self.child.parseIn(agents[0].shape+','+child)
+            start(agents[0].shape, mdl=self.child)
         else:
             # returns an error message if the parents arnt compatible
             print("ERROR shapes dont match")

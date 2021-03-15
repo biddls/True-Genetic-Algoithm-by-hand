@@ -1,4 +1,5 @@
 /.idea
-/venv
 /agents
+/main
+/venv
 /wandb

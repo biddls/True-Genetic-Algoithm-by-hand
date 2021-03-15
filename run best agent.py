@@ -23,5 +23,6 @@ def showOff(path):
 
 
 if __name__ == '__main__':
-    path = 'agents\\1242.4277325456724.txt'
+    # change to what ever agent u want to see run
+    path = 'best.txt'
     showOff(path)

@@ -1,7 +1,8 @@
+import time
 import os
 import sys
 import numpy as np
-import util
+from util import pairs
 from gray import gray
 from layer import layer
 from random import choice
@@ -47,7 +48,7 @@ class model:
             f[1] = [number.numb() for number in self.grayNumb]
             # 1XN x NX(N+1) for formatting of matrices
             # uses the generator function to go though the modle ot initliase all of the layers
-            for x in util.pairs(f[0]):
+            for x in pairs(f[0]):
                 # sets the activation function
                 acti = activations.get(x[0][1])
                 # finds the length of the matrix for the weights if it was flatted into a 1D vector
@@ -76,7 +77,7 @@ class model:
     # initialised a random model
     def initMdl(self, shape):
         temp: str = ''
-        for pair in util.pairs(shape):
+        for pair in pairs(shape):
             # generates a random list of 1s and 0s
             temp += ''.join([str(choice([0, 1])) for x in range(((int(pair[0][:-2]) + 1) * int(pair[1][:-2]))*8)])
 
