@@ -11,4 +11,7 @@
     - a feature to enable **training resumption**
     - best score and average **score logging** for each eps
    
+If you can't get it to work see here to see it in action (the best agent that was trained)
+>https://1drv.ms/u/s!AhKDfKsG6_tQmK8bMJVobA-Rl3ulaA?e=3gipXl
+
 ###-Biddls
