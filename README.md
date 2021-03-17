@@ -21,4 +21,6 @@ modules needed:
  - box2d (To run a certain env)
  - gym (openAI gym Venvs)
 
+You'll also need Swish and to add it to ur path
+
 run 'run best agent.py' to see it in action
