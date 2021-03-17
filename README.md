@@ -1,6 +1,6 @@
 # This is the portfolio 3 for the AI coursework 1st year Hope uni
 
-###the features of this work
+the features of this work
  - Very fundamental implementation of a **Binary Genetic Algorithm**
  - Full gene sequence stored in **8 bit gray code**
  - **Highly configurable NN** shape and activation functions
@@ -14,4 +14,8 @@
 If you can't get it to work see here to see it in action (the best agent that was trained)
 >https://1drv.ms/u/s!AhKDfKsG6_tQmK8bMJVobA-Rl3ulaA?e=3gipXl
 
-###-Biddls
+Python 3.8.x
+modules needed
+ - numpy
+ - box2d (To run a certain env)
+ - gym (openAI gym Venvs)
