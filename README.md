@@ -20,3 +20,5 @@ modules needed:
  - numpy
  - box2d (To run a certain env)
  - gym (openAI gym Venvs)
+
+run 'run best agent.py' to see it in action
