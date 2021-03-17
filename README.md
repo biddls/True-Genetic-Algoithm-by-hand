@@ -16,7 +16,7 @@ If you can't get it to work see here to see it in action (the best agent that wa
 
 Python 3.8.x
 
-modules needed
+modules needed:
  - numpy
  - box2d (To run a certain env)
  - gym (openAI gym Venvs)
