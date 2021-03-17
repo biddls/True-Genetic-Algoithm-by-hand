@@ -15,6 +15,7 @@ If you can't get it to work see here to see it in action (the best agent that wa
 >https://1drv.ms/u/s!AhKDfKsG6_tQmK8bMJVobA-Rl3ulaA?e=3gipXl
 
 Python 3.8.x
+
 modules needed
  - numpy
  - box2d (To run a certain env)
